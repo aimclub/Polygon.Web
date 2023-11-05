@@ -1,0 +1,208 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Polygon</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/fileupload.css' %}" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/fileupload.js' %}" defer></script>
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/cover.css' %}" rel="stylesheet">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <img src="{% static 'img/logo_2.PNG' %}" class="img-fluid" style="position: relative" alt="logo">
+        </div>
+    </header>
+
+    <main>
+        <div class="row  justify-content-center">
+            <div class="col-md-12">
+                <form id="msform" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">Files Upload</li>
+                        <li>Resize Scale</li>
+                        <li>Augmentation</li>
+                        <li>OOD Detection</li>
+                    </ul>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <h2 class="fs-title">File Upload</h2>
+                        <h3 class="fs-subtitle">Select model file</h3>
+                        <input type="file" class="form-control" name="modelfile" aria-label="Upload">
+                        <br>
+                        <h3 class="fs-subtitle">Select data file</h3>
+                        <input type="file" class="form-control" name="datafile" aria-label="Upload">
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Resize Scale</h2>
+                        <h3 class="fs-subtitle">Select resize scale</h3>
+                        <div class="row align-items-center">
+                            <div class="col-md-5">
+                                <input type="text" name="width" placeholder="Width"/>
+                            </div>
+                            <div class="col-md-2">
+                                <a style="color: white">X</a>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" name="height" placeholder="Height"/>
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Augmentation</h2>
+                        <h3 class="fs-subtitle">Select augmentation options</h3>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="input-group">
+                                <div class="col-md-1 offset-md-3">
+                                    <input class="form-check-input mt-0" type="checkbox" name="rt" value="1"
+                                           id="flexCheckDefault1">
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="form-check-label" for="flexCheckDefault1" style="color: white">Rotation</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="input-group">
+                                <div class="col-md-1 offset-md-3">
+                                    <input class="form-check-input mt-0" type="checkbox" name="flp" value="1"
+                                           id="flexCheckDefault1">
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="form-check-label" for="flexCheckDefault1"
+                                           style="color: white">Flip</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="input-group">
+                                <div class="col-md-1 offset-md-3">
+                                    <input class="form-check-input mt-0" type="checkbox" name="brt" value="1"
+                                           id="flexCheckDefault1">
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="form-check-label" for="flexCheckDefault1" style="color: white">Brightness</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="input-group">
+                                <div class="col-md-1 offset-md-3">
+                                    <input class="form-check-input mt-0" type="checkbox" name="cnt" value="1"
+                                           id="flexCheckDefault1">
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="form-check-label" for="flexCheckDefault1" style="color: white">Contrast</label>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">OOD Detection</h2>
+                        <h3 class="fs-subtitle">Select Out-of-Distribution data</h3>
+                        <div class="row justify-content-center">
+                            <div class="col-md-4">
+                                <img src="{% static 'img/brain_ct.jpg' %}" alt="example placeholder"
+                                     style="width: 80%;"/>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{% static 'img/brain_mri.jpg' %}" alt="example placeholder"
+                                     style="width: 77%;"/>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{% static 'img/leg_x_ray.jpg' %}" alt="example placeholder"
+                                     style="width: 80%;"/>
+                            </div>
+                        </div>
+                        <div class="row offset-md-0 justify-content-center">
+                            <div class="col-md-4">
+                                <div class="row align-items-center">
+                                    <div class="col-md-1">
+                                        <input class="form-check-input" type="radio" name="exampleRadios"
+                                               id="exampleRadios1" value="option1" style="width: 2%;">
+                                    </div>
+                                    <div class="col-md-2 offset-md-1">
+                                        <label class="form-check-label text-nowrap" for="exampleRadios1">Brain
+                                            CT</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row align-items-center">
+                                    <div class="col-md-1">
+                                        <input class="form-check-input" type="radio" name="exampleRadios"
+                                               id="exampleRadios1" value="option1" style="width: 2%;">
+                                    </div>
+                                    <div class="col-md-2 offset-md-1">
+                                        <label class="form-check-label text-nowrap" for="exampleRadios1">Brain
+                                            MRI</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row align-items-center">
+                                    <div class="col-md-1">
+                                        <input class="form-check-input" type="radio" name="exampleRadios"
+                                               id="exampleRadios1" value="option1" style="width: 2%;">
+                                    </div>
+                                    <div class="col-md-2 offset-md-1">
+                                        <label class="form-check-label text-nowrap" for="exampleRadios1">Leg
+                                            X-ray</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+    </footer>
+</div>
+
+
+</body>
+</html>

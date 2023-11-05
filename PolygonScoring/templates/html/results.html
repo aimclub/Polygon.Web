@@ -1,0 +1,141 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Polygon</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/cover.css' %}" rel="stylesheet">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <a href="/"><img src="{% static 'img/logo_2.PNG' %}" class="img-fluid" style="position: relative" href=""
+                             alt="logo"></a>
+        </div>
+    </header>
+
+    <main class="px-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-3">
+                <p class="h3">Scoring results</p>
+            </div>
+            <div class="col-md-3 offset-md-1">
+                <p class="h3">Robustness results</p>
+            </div>
+            <div class="col-md-3 offset-md-1">
+                <p class="h3">OOD Detection</p>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-3">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">Metrics</th>
+                        <th scope="col">Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, value in results.items %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3 offset-md-1">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">Metrics</th>
+                        <th scope="col">Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, value in results_aug.items %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3 offset-md-1">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">Metrics</th>
+                        <th scope="col">Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, value in auroc.items %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <p class="h3">Original Image</p>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-5">
+                <img src="/temporary/org_image.png" class="img-fluid" style="position: relative" href="" alt="org_im">
+            </div>
+            <div class="col-md-5 offset-md-1">
+                <img src="/temporary/org_gradcam.png" class="img-fluid" style="position: relative" href="" alt="org_gc">
+            </div>
+        </div>
+        <p class="h3">Augmented Image</p>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-5">
+                <img src="/temporary/aug_image.png" class="img-fluid" style="position: relative" href="" alt="aug_im">
+            </div>
+            <div class="col-md-5 offset-md-1">
+                <img src="/temporary/aug_gradcam.png" class="img-fluid" style="position: relative" href="" alt="aug_gc">
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+    </footer>
+</div>
+
+
+</body>
+</html>
