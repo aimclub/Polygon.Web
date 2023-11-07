@@ -8,7 +8,7 @@ This repository contains tools for automated evaluation of model performance and
 
 Polygon-Scoring is a web application designed to evaluate the effectiveness of the developed model based on calculated metrics. The service provides information about the robustness of the model using standard methods for augmenting source data. Also, the user can select a specific dataset to obtain information about the model's ability for OOD (Out-of-Distribution) detection.
 
-#### Usage
+### Usage
 
 To use Polygon-Scoring applicaton just follow several steps:
 
@@ -61,7 +61,7 @@ The tools were developed in [ITMO University](https://en.itmo.ru/).
 ### Developers
 * A. Vatyan - team leader
 * T. Polevaya
-* D. Zmievsky
+* D. Zmievskiy
 
 ## Contacts
 * Alexandra Vatyan alexvatyan@gmail.com for collaboration suggestions
