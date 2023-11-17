@@ -20,6 +20,7 @@ class TestViews(TestCase):
 			self.upload_data = SimpleUploadedFile("data.zip", d_f.read())
 
 		shutil.copy(str(settings.BASE_DIR) + "/tests/data/brain_ct.npy", str(settings.BASE_DIR) + "/brain_ct.npy")
+		os.mkdir(str(settings.BASE_DIR) + "/temporary")
 
 
 	def test_HomePage(self):
@@ -53,5 +54,6 @@ class TestViews(TestCase):
 
 		try:
 			os.remove(str(settings.BASE_DIR) + "/brain_ct.npy")
+			shutil.rmtree(str(settings.BASE_DIR) + "/temporary")
 		except OSError:
 			pass
