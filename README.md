@@ -2,7 +2,7 @@
 
 This repository contains tools for automated evaluation of model performance and robustness.
 
-The project is still under development, so the ыervices will be announced later!
+The project is still under development, so the services will be announced later!
 
 ## Polygon-Scoring
 
