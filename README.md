@@ -2,6 +2,8 @@
 
 This repository contains tools for automated evaluation of model performance and robustness.
 
+The project is still under development, so the ыervices will be announced later!
+
 ## Polygon-Scoring
 
 ### Project Description
@@ -50,6 +52,9 @@ To use Polygon-Leaderboards applicaton just follow several steps:
 * Data file should be in .zip format and consists of:
 	* markup.csv - file with filenames and their labels
 	* data - folder for input data
+
+## Documentation
+The general description is available [here](https://danilzmievskiy.github.io/Polygon/).
 
 ## Acknowledgments
 ### Affiliation
