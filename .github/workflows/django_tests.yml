@@ -23,5 +23,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python ./PolygonScoring/manage.py test
-        python ./PolygonLeaderBoards/manage.py test
+        python ./PolygonScoring/manage.py test tests
+        python ./PolygonLeaderBoards/manage.py test tests
