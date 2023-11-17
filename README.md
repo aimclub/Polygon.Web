@@ -54,7 +54,7 @@ To use Polygon-Leaderboards applicaton just follow several steps:
 	* data - folder for input data
 
 ## Documentation
-The general description is available [here](https://danilzmievskiy.github.io/Polygon/).
+The general description is available [here](https://danilzmievskiy.github.io/Polygon.Web/).
 
 ## Acknowledgments
 ### Affiliation
