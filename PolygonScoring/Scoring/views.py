@@ -9,7 +9,7 @@ import os
 
 from .forms import UploadFileForm
 from .modelscr import save_data, data_import, data_augmentation, model_prediction, ood_detection
-from .ada import adv_data_augementation, grad_cam
+from utils.ada import adv_data_augementation, grad_cam
 from django.conf import settings
 
 

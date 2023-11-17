@@ -25,7 +25,8 @@ def save_data():
     with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
         zip_ref.extractall(settings.MEDIA_ROOT)
 
-    os.rename(settings.MEDIA_ROOT + "/lung_CT",
+    folder_name = [f for f in os.listdir(settings.MEDIA_ROOT) if os.path.isdir(os.path.join(settings.MEDIA_ROOT, f))]
+    os.rename(settings.MEDIA_ROOT + "/" + folder_name[-1],
               settings.MEDIA_ROOT + "/dataset")
 
 
